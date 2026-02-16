@@ -1,225 +1,58 @@
-:root {
-  --black: #000;
-  --white: #fff;
-  --gray: #f5f5f5;
-  --radius: 14px;
-  --shadow: 0 6px 16px rgba(0,0,0,0.08);
+.products-section {
+  padding: 40px 0;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #fff;
-  color: #111;
-}
-
-/* ================= TICKER ================= */
-.ticker {
-  background: #000;
-  color: #fff;
-  overflow: hidden;
-  white-space: nowrap;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-
-.ticker__track {
-  display: inline-block;
-  animation: ticker 20s linear infinite;
-}
-
-@keyframes ticker {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ticker__track {
-    animation: none;
-  }
-}
-
-/* ================= HEADER ================= */
-.header {
-  position: sticky;
-  top: 0;
-  background: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 16px;
-  box-shadow: var(--shadow);
-  z-index: 100;
-}
-
-.logo {
-  font-weight: 700;
-  text-decoration: none;
-  color: #000;
-}
-
-.icon-btn {
-  background: none;
-  border: none;
+.section-title {
   font-size: 20px;
-  min-width: 44px;
-  min-height: 44px;
-  cursor: pointer;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
-/* ================= DRAWER ================= */
-.drawer {
-  position: fixed;
-  left: -100%;
-  top: 0;
-  width: 80%;
-  height: 100%;
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.product-card {
   background: #fff;
-  padding: 20px;
-  transition: 0.3s ease;
-  z-index: 200;
-  overflow-y: auto;
-}
-
-.drawer.open {
-  left: 0;
-}
-
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  display: none;
-  z-index: 150;
-}
-
-.overlay.active {
-  display: block;
-}
-
-.drawer-menu {
-  list-style: none;
-  padding: 0;
-}
-
-.drawer-menu li {
-  margin-bottom: 12px;
-}
-
-.accordion-btn {
-  background: none;
-  border: none;
-  font-weight: 600;
-  width: 100%;
-  text-align: left;
-}
-
-.submenu {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-
-/* ================= SLIDER ================= */
-.slider {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 5/6;
-}
-
-.slides {
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
   display: flex;
-  transition: transform 0.4s ease;
+  flex-direction: column;
 }
 
-.slide {
-  min-width: 100%;
-}
-
-.slide img {
+.product-card img {
   width: 100%;
-  height: 100%;
+  border-radius: 12px;
+  aspect-ratio: 1/1;
   object-fit: cover;
 }
 
-.dots {
-  position: absolute;
-  bottom: 12px;
-  width: 100%;
-  text-align: center;
-}
-
-.dots button {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: none;
-  margin: 0 4px;
-  background: #ccc;
-}
-
-.dots button.active {
-  background: #000;
-}
-
-/* ================= TABS ================= */
-.find-team {
-  padding: 24px 16px;
-  text-align: center;
-}
-
-.tabs {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.tab {
-  background: none;
-  border: none;
+.product-title {
+  font-size: 14px;
   font-weight: 600;
-  cursor: pointer;
+  margin: 8px 0 4px;
 }
 
-.tab.active {
-  border-bottom: 2px solid #000;
+.product-price {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 8px;
 }
 
-.logos {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.logos img {
-  width: 100%;
-  border-radius: var(--radius);
-}
-
-/* ================= MAIS VENDIDOS ================= */
-.best-sellers {
+.product-btn {
   background: #000;
   color: #fff;
-  padding: 24px 16px;
-}
-
-.best-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.countdown span {
-  background: #fff;
-  color: #000;
-  padding: 6px 10px;
+  border: none;
   border-radius: 8px;
-  font-weight: 700;
+  height: 40px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.product-btn:hover {
+  opacity: .8;
 }

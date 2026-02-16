@@ -1,121 +1,69 @@
-// ================= DRAWER =================
-const drawer = document.getElementById("drawer");
-const overlay = document.getElementById("overlay");
+const products = [
+  {
+    id: 1,
+    name: "Camisa Teste R$3",
+    price: 3.00,
+    image: "https://via.placeholder.com/500x500?text=R$3"
+  },
+  {
+    id: 2,
+    name: "Camisa Teste R$5",
+    price: 5.00,
+    image: "https://via.placeholder.com/500x500?text=R$5"
+  },
+  {
+    id: 3,
+    name: "Camisa Teste R$10",
+    price: 10.00,
+    image: "https://via.placeholder.com/500x500?text=R$10"
+  },
+  {
+    id: 4,
+    name: "Kit Treino R$5",
+    price: 5.00,
+    image: "https://via.placeholder.com/500x500?text=Kit+5"
+  },
+  {
+    id: 5,
+    name: "Camisa Promo R$3",
+    price: 3.00,
+    image: "https://via.placeholder.com/500x500?text=Promo+3"
+  },
+  {
+    id: 6,
+    name: "Camisa Especial R$10",
+    price: 10.00,
+    image: "https://via.placeholder.com/500x500?text=Especial+10"
+  }
+];
 
-document.getElementById("menuBtn").addEventListener("click", () => {
-  drawer.classList.add("open");
-  overlay.classList.add("active");
+const grid = document.getElementById("productsGrid");
+
+products.forEach(product => {
+  const card = document.createElement("div");
+  card.className = "product-card";
+
+  card.innerHTML = `
+    <img src="${product.image}" loading="lazy" width="500" height="500">
+    <div class="product-title">${product.name}</div>
+    <div class="product-price">R$ ${product.price.toFixed(2)}</div>
+    <button class="product-btn" onclick="buyNow(${product.id})">
+      Comprar agora
+    </button>
+  `;
+
+  grid.appendChild(card);
 });
 
-document.getElementById("closeDrawer").addEventListener("click", closeDrawer);
-overlay.addEventListener("click", closeDrawer);
+function buyNow(id) {
+  const product = products.find(p => p.id === id);
 
-function closeDrawer() {
-  drawer.classList.remove("open");
-  overlay.classList.remove("active");
+  localStorage.setItem("checkoutProduct", JSON.stringify({
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    quantity: 1
+  }));
+
+  window.location.href = "checkout.html";
 }
-
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape") closeDrawer();
-});
-
-// ================= ACCORDION =================
-document.querySelectorAll(".accordion-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const submenu = btn.nextElementSibling;
-    submenu.style.maxHeight = submenu.scrollHeight + "px";
-  });
-});
-
-// ================= SLIDER =================
-const slider = document.querySelector(".slides");
-const dotsContainer = document.querySelector(".dots");
-const slides = document.querySelectorAll(".slide");
-let index = 0;
-
-slides.forEach((_, i) => {
-  const dot = document.createElement("button");
-  dot.addEventListener("click", () => goToSlide(i));
-  dotsContainer.appendChild(dot);
-});
-
-function updateDots() {
-  document.querySelectorAll(".dots button").forEach((dot, i) => {
-    dot.classList.toggle("active", i === index);
-  });
-}
-
-function goToSlide(i) {
-  index = i;
-  slider.style.transform = `translateX(-${i * 100}%)`;
-  updateDots();
-}
-
-setInterval(() => {
-  index = (index + 1) % slides.length;
-  goToSlide(index);
-}, 4000);
-
-updateDots();
-
-// ================= TABS =================
-const logosContainer = document.getElementById("logos");
-
-const data = {
-  br: [
-    { img: "logo1.png", link: "#" },
-    { img: "logo2.png", link: "#" },
-    { img: "logo3.png", link: "#" }
-  ],
-  int: [
-    { img: "logo4.png", link: "#" },
-    { img: "logo5.png", link: "#" },
-    { img: "logo6.png", link: "#" }
-  ],
-  sel: [
-    { img: "logo7.png", link: "#" },
-    { img: "logo8.png", link: "#" },
-    { img: "logo9.png", link: "#" }
-  ]
-};
-
-function renderLogos(tab) {
-  logosContainer.innerHTML = "";
-  data[tab].forEach(item => {
-    const a = document.createElement("a");
-    a.href = item.link;
-    a.innerHTML = `<img src="${item.img}" alt="" loading="lazy">`;
-    logosContainer.appendChild(a);
-  });
-}
-
-document.querySelectorAll(".tab").forEach(tab => {
-  tab.addEventListener("click", () => {
-    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-    tab.classList.add("active");
-    renderLogos(tab.dataset.tab);
-  });
-});
-
-renderLogos("br");
-
-// ================= COUNTDOWN =================
-const deadline = new Date(Date.now() + 12 * 60 * 60 * 1000);
-
-function updateCountdown() {
-  const now = new Date();
-  const diff = deadline - now;
-
-  if (diff <= 0) return;
-
-  const h = Math.floor(diff / 1000 / 60 / 60);
-  const m = Math.floor(diff / 1000 / 60) % 60;
-  const s = Math.floor(diff / 1000) % 60;
-
-  document.getElementById("hours").textContent = String(h).padStart(2,"0");
-  document.getElementById("minutes").textContent = String(m).padStart(2,"0");
-  document.getElementById("seconds").textContent = String(s).padStart(2,"0");
-}
-
-setInterval(updateCountdown, 1000);
-updateCountdown();
