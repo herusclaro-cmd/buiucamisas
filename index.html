@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lirou Jersey’s</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- =========================
+TOP TICKER
+========================= -->
+<div class="ticker" aria-label="Avisos promocionais">
+  <div class="ticker__track">
+    <span>ATÉ 30% OFF + FRETE GRÁTIS SOMENTE ESSA SEMANA •</span>
+    <span>GARANTIA DE TROCA OU DEVOLUÇÃO •</span>
+    <span>COMPRA 100% SEGURA •</span>
+
+    <!-- duplicado para loop perfeito -->
+    <span>ATÉ 30% OFF + FRETE GRÁTIS SOMENTE ESSA SEMANA •</span>
+    <span>GARANTIA DE TROCA OU DEVOLUÇÃO •</span>
+    <span>COMPRA 100% SEGURA •</span>
+  </div>
+</div>
+
+<!-- =========================
+HEADER
+========================= -->
+<header class="header" role="banner">
+  <button class="icon-btn" id="menuBtn" aria-label="Abrir menu">
+    ☰
+  </button>
+
+  <a href="#" class="logo" aria-label="Página inicial">
+    Lirou Jersey’s
+  </a>
+
+  <div class="header-icons">
+    <button class="icon-btn" aria-label="Buscar">🔍</button>
+    <button class="icon-btn" aria-label="Favoritos">❤</button>
+    <button class="icon-btn" aria-label="Carrinho">🛒</button>
+  </div>
+</header>
+
+<!-- =========================
+DRAWER
+========================= -->
+<div class="overlay" id="overlay"></div>
+
+<nav class="drawer" id="drawer" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="drawer-header">
+    <strong>Menu</strong>
+    <button id="closeDrawer" aria-label="Fechar menu">✕</button>
+  </div>
+
+  <ul class="drawer-menu">
+    <li><a href="#">INICIO</a></li>
+    <li><a href="#">PRONTA ENTREGA</a></li>
+
+    <li class="has-sub">
+      <button class="accordion-btn">BRASILEIROS</button>
+      <ul class="submenu"></ul>
+    </li>
+
+    <li class="has-sub">
+      <button class="accordion-btn">INTERNACIONAIS</button>
+      <ul class="submenu"></ul>
+    </li>
+
+    <li class="has-sub">
+      <button class="accordion-btn">SELEÇÕES</button>
+      <ul class="submenu"></ul>
+    </li>
+
+    <li><a href="#">RASTREAR PEDIDO</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- =========================
+SLIDER
+========================= -->
+<section class="slider-section">
+  <div class="slider" id="slider">
+    <div class="slides">
+      <!-- Troque URLs abaixo -->
+      <div class="slide"><img src="banner1.jpg" alt="" loading="lazy" width="1000" height="1200"></div>
+      <div class="slide"><img src="banner2.jpg" alt="" loading="lazy" width="1000" height="1200"></div>
+      <div class="slide"><img src="banner3.jpg" alt="" loading="lazy" width="1000" height="1200"></div>
+      <div class="slide"><img src="banner4.jpg" alt="" loading="lazy" width="1000" height="1200"></div>
+      <div class="slide"><img src="banner5.jpg" alt="" loading="lazy" width="1000" height="1200"></div>
+      <div class="slide"><img src="banner6.jpg" alt="" loading="lazy" width="1000" height="1200"></div>
+      <div class="slide"><img src="banner7.jpg" alt="" loading="lazy" width="1000" height="1200"></div>
+      <div class="slide"><img src="banner8.jpg" alt="" loading="lazy" width="1000" height="1200"></div>
+    </div>
+    <div class="dots"></div>
+  </div>
+</section>
+
+<!-- =========================
+ENCONTRE POR TIME
+========================= -->
+<section class="find-team">
+  <h2>ENCONTRE POR TIME</h2>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="br">BRASILEIROS</button>
+    <button class="tab" data-tab="int">INTERNACIONAIS</button>
+    <button class="tab" data-tab="sel">SELEÇÕES</button>
+  </div>
+
+  <div class="logos" id="logos"></div>
+</section>
+
+<!-- =========================
+MAIS VENDIDOS
+========================= -->
+<section class="best-sellers">
+  <div class="best-header">
+    <div>
+      <h3>MAIS VENDIDOS</h3>
+      <p>últimas unidades disponíveis</p>
+    </div>
+
+    <div class="countdown">
+      <span id="hours">00</span> :
+      <span id="minutes">00</span> :
+      <span id="seconds">00</span>
+    </div>
+  </div>
+
+  <hr />
+</section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
